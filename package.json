@@ -17,6 +17,7 @@
     "jsonwebtoken": "^8.1.0",
     "mysql2": "^1.5.1",
     "paypal-rest-sdk": "^1.8.1",
+    "pg": "^7.4.1",
     "ps": "0.0.2",
     "sequelize": "^4.28.6",
     "stripe": "^5.4.0"
