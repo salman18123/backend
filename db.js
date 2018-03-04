@@ -3,7 +3,7 @@ const bcrypt=Promise.promisifyAll(require('bcrypt-nodejs'))
 const Sequelize=require('sequelize')
 var db
 if(process.env.DATABASE_URL){
-    db=new Sequelize('process.env.DATABASE_URL',{
+    db=new Sequelize(process.env.DATABASE_URL,{
         dialect:'postgres',
         protocol:'postgres',
         logging:false
