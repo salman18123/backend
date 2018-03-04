@@ -1,7 +1,17 @@
 const Promise=require('bluebird')
 const bcrypt=Promise.promisifyAll(require('bcrypt-nodejs'))
 const Sequelize=require('sequelize')
-const db=new Sequelize('petkart','petkart','petkart',{
+var db
+if(process.env.DATABASE_URL){
+    db=new Sequelize('process.env.DATABASE_URL',{
+        dialect:'postgres',
+        protocol:'postgres',
+        logging:false
+    })
+
+}
+else{
+db=new Sequelize('petkart','petkart','petkart',{
     host:'localhost',
     dialect:'mysql',
     pool:{
@@ -9,6 +19,7 @@ const db=new Sequelize('petkart','petkart','petkart',{
         max:5
     }
 })
+}
 function hashpassword(user,options){
     const SALT_FACTOR=8
     if(!user.changed('password')){
